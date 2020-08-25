@@ -11,7 +11,7 @@ namespace Lab.EventSourcing.Tests.Extensions
             foreach (var @event in events)
                 if (@event.GetType() == typeof(T)) return;
 
-            throw new Exception("Event not emitted.");
+            throw new Exception($"Event '{typeof(T).Name}' not emitted.");
         }
     }
 }
