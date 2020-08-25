@@ -23,6 +23,7 @@ namespace Lab.EventSourcing.Tests
         {
             _priceAlert = PriceAlert.PriceAlert.Create(_symbol, _price);
             _priceAlert.Commit();
+
             _priceAlert.Trigger();
 
             EventAssert.EventEmitted<PriceAlertTriggered>(_priceAlert.PendingEvents);
@@ -33,6 +34,7 @@ namespace Lab.EventSourcing.Tests
         {
             _priceAlert = PriceAlert.PriceAlert.Create(_symbol, _price);
             _priceAlert.Commit();
+
             _priceAlert.Cancel();
 
             EventAssert.EventEmitted<PriceAlertCancelled>(_priceAlert.PendingEvents);
