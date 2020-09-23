@@ -47,13 +47,13 @@ namespace Lab.EventSourcing.PriceAlert
             RaiseEvent(new PriceAlertCancelled());
         }
 
-        internal void Apply(PriceAlertCreated pendingEvent) =>
+        public void Apply(PriceAlertCreated pendingEvent) =>
             (Id, Symbol, TargetPrice, Active) = (pendingEvent.Id, pendingEvent.Symbol, pendingEvent.TargetPrice, true);
 
-        internal void Apply(PriceAlertTriggered pendingEvent) =>
+        public void Apply(PriceAlertTriggered pendingEvent) =>
             (TriggeredAt, Active) = (pendingEvent.When, false);
 
-        internal void Apply(PriceAlertCancelled pendingEvent) =>
+        public void Apply(PriceAlertCancelled pendingEvent) =>
             Active = false;
     }
 }
